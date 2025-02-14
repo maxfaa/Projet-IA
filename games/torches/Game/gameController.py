@@ -3,11 +3,11 @@ from Game.gameView import *
 from Players.players import *
 
 class GameControler:
-    def __init__(self, player1, player2, nb_matches=15):
-        if not isinstance(player1, Human) and not isinstance(player2, Human):
+    def __init__(self, players, nb_matches=15):
+        if not isinstance(players[0], Human) and not isinstance(players[1], Human):
             raise ValueError("Il doit y avoir au moins un joueur humain.")
         
-        self.model = GameModel(nb_matches, player1, player2)
+        self.model = GameModel(nb_matches, players)
         self.view = GameView(self)
         
         if isinstance(self.model.get_current_player(), Player) and not isinstance(self.model.get_current_player(), Human):
@@ -52,7 +52,7 @@ class GameControler:
 
     def handle_end_game(self):
         winner = self.model.get_winner()
-        loser = self.model.get_loser()
         winner.win()
+        loser = self.model.get_loser()
         loser.lose()
         self.view.end_game()

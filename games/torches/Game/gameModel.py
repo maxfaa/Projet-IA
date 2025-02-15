@@ -40,7 +40,6 @@ class GameModel:
         self.current_player.win()
 
     def switch_player(self):
-        #self.current_player = self.players[0] if self.current_player == self.players[1] else self.players[1]
         if self.current_player == self.players[1]:
             self.current_player = self.players[0]
         else:

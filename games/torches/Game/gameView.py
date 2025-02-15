@@ -1,52 +1,59 @@
-from tkinter import *
-from tkinter import messagebox
+import customtkinter as ctk
+from tkinter import Canvas, PhotoImage
 
-class GameView(Tk):
+ctk.set_appearance_mode("dark")     
+ctk.set_default_color_theme("green")
+
+class GameView(ctk.CTk):
     def __init__(self, controller):
         super().__init__()
         self.controller = controller
         self.title("Jeu des allumettes")
+        self.minsize(800, 500)
+        self.maxsize(800, 500)
+
+        self.message_label = ctk.CTkLabel(self, text="", font=("OCR A Extended", 20, "bold"), text_color="#32CD32")
+        self.message_label.pack(pady=20)
         
-        self.message_label = Label(self, text="", font=("Arial", 14))
-        self.message_label.pack()
-        
-        self.canvas = Canvas(self, width=800, height=400)
+        self.canvas = Canvas(self, width=725, height=325)
         self.canvas.pack()
         
-        self.buttons_frame = Frame(self)
-        self.buttons_frame.pack()
+        self.buttons_frame = ctk.CTkFrame(self)
+        self.buttons_frame.pack(pady=5)
         
         self.buttons = []
-        for i in range(1, 4):
-            button = Button(self.buttons_frame, text=f"Prendre {i}", command=lambda n=i: self.controller.handle_human_move(n))
-            button.pack(side="left")
-            self.buttons.append(button)
+        self.buttons_create()
         
+        self.torch_image = PhotoImage(file="games/torches/images/Torche.gif") # permet de mettre les torches minecraft en gif (mais pas encore résolu, elles bougent pas :/)
+        #self.torch_image = self.torch_image.subsample(2,2) #divise par deux la taille de la torche, en x et y
+
         self.update_view()
     
     def update_view(self):
         self.canvas.delete("all")
         self.draw_matches(self.controller.get_nb_matches())
-        self.message_label.config(text=self.controller.get_status_message())
+        self.message_label.configure(text=self.controller.get_status_message())
     
     def draw_matches(self, count):
         for i in range(count):
-            x = 20 + i * 30
-            self.canvas.create_line(x, 50, x, 150, width=10, fill='brown')
-            self.canvas.create_rectangle((x, 50), (x, 50), width=10, outline='red')
+            x = 80 + i * 40
+            self.canvas.create_image(x, 150, image=self.torch_image)
             
     def end_game(self): 
         for widget in self.buttons_frame.winfo_children():
             widget.destroy()
-        reset_button = Button(self.buttons_frame, text="Recommencer", command=self.controller.reset_game)
-        reset_button.pack()
+        reset_button = ctk.CTkButton(self.buttons_frame, text="Recommencer", command=self.controller.reset_game)
+        reset_button.pack(padx=10, pady=20)
     
     def reset(self):
         for widget in self.buttons_frame.winfo_children():
             widget.destroy()
         self.buttons = []
-        for i in range(1, 4):
-            button = Button(self.buttons_frame, text=f"Prendre {i}", command=lambda n=i: self.controller.handle_human_move(n))
-            button.pack(side="left")
-            self.buttons.append(button)
+        self.buttons_create()
         self.update_view()
+
+    def buttons_create(self): # pour éviter de se répéter dans le reset et le init
+        for i in range(1, 4):
+            button = ctk.CTkButton(self.buttons_frame, text=f"Prendre {i}", command=lambda n=i: self.controller.handle_human_move(n))
+            button.pack(side="left", padx=10, pady=20)
+            self.buttons.append(button)

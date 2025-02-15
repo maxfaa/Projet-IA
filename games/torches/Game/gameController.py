@@ -22,7 +22,7 @@ class GameControler:
     def get_status_message(self):
         if self.model.is_game_over():
             return f"{self.model.get_winner().name} a gagné !"
-        return f"{self.model.get_current_player().name}"
+        return f"Au tour du grand : {self.model.get_current_player().name}"
     
     def reset_game(self):
         self.model.reset()

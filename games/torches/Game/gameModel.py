@@ -50,11 +50,10 @@ class GameModel:
         return self.current_player
 
     def get_winner(self):
-        if self.current_player == self.players[0]:
-            return self.players[1] 
-        else: 
-            return self.players[0]
-
+        if self.is_game_over():
+            return self.players[0] if self.current_player == self.players[1] else self.players[1]
+        else:
+            return None
     
     def get_loser(self):
         return self.current_player if self.is_game_over() else None

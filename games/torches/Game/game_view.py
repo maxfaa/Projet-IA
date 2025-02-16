@@ -3,6 +3,7 @@ Module qui gère l'interface graphique du jeu des alumettes
 """
 from tkinter import PhotoImage
 import customtkinter as ctk
+from PIL import Image
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("green")
@@ -18,6 +19,9 @@ class GameView(ctk.CTk):
         canvas : zone des alumettes
         buttons_frame = zone des boutons
         torch_image = fichier de la torche minecraft
+        frames (int): nombre total de frames du gif
+        torch_frames (list): liste des frames du gif
+        current_frame (int): frame courante
     """
     def __init__(self, controller)->None:
         """
@@ -36,7 +40,7 @@ class GameView(ctk.CTk):
             text="",
             font=("OCR A Extended",20, "bold"),
             text_color="#32CD32"
-            )
+        )
         self.message_label.pack(pady=20)
 
         self.canvas = ctk.CTkCanvas(self, width=725, height=325,bg= "#323232")
@@ -48,10 +52,14 @@ class GameView(ctk.CTk):
         self.buttons = []
         self.buttons_create()
 
-        self.torch_image = PhotoImage(file="games/torches/images/Torche.gif")
-        #permet de mettre les torches minecraft en gif (pas encore résolu, elles bougent pas :/)
-        #self.torch_image = self.torch_image.subsample(2,2)
+       #self.torch_image = self.torch_image.subsample(2,2)
         #divise par deux la taille de la torche, en x et y
+        gif_path = "games/torches/images/Torche.gif"
+        gif_image = Image.open(gif_path)
+        self.frames = gif_image.n_frames
+        self.torch_frames = [PhotoImage(file=gif_path, format=f"gif -index {i}") for i in range(self.frames)]
+        self.current_frame = 0
+        self.animate()
 
         self.update_view()
 
@@ -109,3 +117,12 @@ class GameView(ctk.CTk):
                 )
             button.pack(side="left", padx=10, pady=20)
             self.buttons.append(button)
+
+    def animate(self)->None:
+        """
+        Anime les torches
+        """
+        self.current_frame = (self.current_frame + 1) % self.frames
+        self.torch_image = self.torch_frames[self.current_frame]
+        self.update_view()
+        self.after(100, self.animate)

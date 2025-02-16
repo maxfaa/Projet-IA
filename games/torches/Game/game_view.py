@@ -3,7 +3,7 @@ Module qui gère l'interface graphique du jeu des alumettes
 """
 from tkinter import PhotoImage
 import customtkinter as ctk
-from PIL import Image
+from PIL import Image, ImageTk
 
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("green")
@@ -34,12 +34,18 @@ class GameView(ctk.CTk):
         self.title("Jeu des allumettes")
         self.minsize(800, 500)
         self.maxsize(800, 500)
+        bg_pil = Image.open("games/torches/images/background.jpg")
+        background_path = ImageTk.PhotoImage(bg_pil)
+        bg_image = ctk.CTkLabel(self, image=background_path, text="")  # Text vide
+        bg_image.image = background_path  # Garder une référence
+        bg_image.place(relx=0, rely=0, relwidth=1, relheight=1)
 
         self.message_label = ctk.CTkLabel(
             self,
             text="",
             font=("OCR A Extended",20, "bold"),
-            text_color="#32CD32"
+            text_color="#32CD32",
+            padx = 30
         )
         self.message_label.pack(pady=20)
 

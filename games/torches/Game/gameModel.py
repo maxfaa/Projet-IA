@@ -1,7 +1,8 @@
 import random
+from typing import List
 
 class GameModel:
-    def __init__(self, nb_torch, players, display=True):
+    def __init__(self, nb_torch: int, players : List[str], display: bool=True)-> None:
         self.original_nb = nb_torch
         self.nb = nb_torch
         self.players = players
@@ -13,24 +14,24 @@ class GameModel:
         
         self.shuffle()
 
-    def shuffle(self):
+    def shuffle(self)-> None:
         self.current_player = random.choice(self.players)
 
-    def reset(self):
+    def reset(self)-> None:
         self.nb = self.original_nb
         self.shuffle()
 
-    def display(self):
+    def display(self)-> None:
         if self.displayable:
             print(f"Allumettes restantes: {self.nb}")
 
-    def step(self, action):
+    def step(self, action: int)-> None:
         self.nb -= action
 
-    def is_game_over(self):
+    def is_game_over(self)-> bool:
         return self.nb <= 0
 
-    def play(self): 
+    def play(self)-> None: 
         while self.nb > 0:
             self.display()
             self.step(self.current_player.play())
@@ -39,20 +40,20 @@ class GameModel:
             self.switch_player()
         self.current_player.win()
 
-    def switch_player(self):
+    def switch_player(self)-> None:
         if self.current_player == self.players[1]:
             self.current_player = self.players[0]
         else:
             self.current_player = self.players[1]
             
-    def get_current_player(self):
+    def get_current_player(self)-> str:
         return self.current_player
 
-    def get_winner(self):
+    def get_winner(self)-> str:
         if self.is_game_over():
             return self.players[0] if self.current_player == self.players[1] else self.players[1]
         else:
             return None
     
-    def get_loser(self):
+    def get_loser(self)-> str:
         return self.current_player if self.is_game_over() else None

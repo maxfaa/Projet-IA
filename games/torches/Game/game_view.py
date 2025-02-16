@@ -19,9 +19,11 @@ class GameView(ctk.CTk):
         canvas : zone des alumettes
         buttons_frame = zone des boutons
         torch_image = fichier de la torche minecraft
+        ----- attributs pour le gif quand il sera fonctionnel
         frames (int): nombre total de frames du gif
         torch_frames (list): liste des frames du gif
         current_frame (int): frame courante
+        -----
     """
     def __init__(self, controller)->None:
         """
@@ -34,7 +36,7 @@ class GameView(ctk.CTk):
         self.title("Jeu des allumettes")
         self.minsize(800, 500)
         self.maxsize(800, 500)
-        bg_pil = Image.open("games/torches/images/background.jpg")
+        bg_pil = Image.open("games/torches/images/background.jpg") #mise en page du fond minecraft
         background_path = ImageTk.PhotoImage(bg_pil)
         bg_image = ctk.CTkLabel(self, image=background_path, text="")
         bg_image.image = background_path
@@ -58,14 +60,18 @@ class GameView(ctk.CTk):
         self.buttons = []
         self.buttons_create()
 
-       #self.torch_image = self.torch_image.subsample(2,2)
+        self.torch_image = PhotoImage(file="games/torches/images/Torche.gif")
+        #self.torch_image = self.torch_image.subsample(2,2)
         #divise par deux la taille de la torche, en x et y
+
+        """ Pour animer la torche (pas encore fonctionnel, petit bug d'affichage)
         gif_path = "games/torches/images/Torche.gif"
         gif_image = Image.open(gif_path)
         self.frames = gif_image.n_frames
         self.torch_frames = [PhotoImage(file=gif_path, format=f"gif -index {i}") for i in range(self.frames)]
         self.current_frame = 0
         self.animate()
+        """
 
         self.update_view()
 
@@ -124,11 +130,11 @@ class GameView(ctk.CTk):
             button.pack(side="left", padx=10, pady=20)
             self.buttons.append(button)
 
-    def animate(self)->None:
-        """
-        Anime les torches
-        """
-        self.current_frame = (self.current_frame + 1) % self.frames
-        self.torch_image = self.torch_frames[self.current_frame]
-        self.update_view()
-        self.after(100, self.animate)
+    # def animate(self)->None:
+    #     """
+    #     Anime les torches
+    #     """
+    #     self.current_frame = (self.current_frame + 1) % self.frames
+    #     self.torch_image = self.torch_frames[self.current_frame]
+    #     self.update_view()
+    #     self.after(100, self.animate)

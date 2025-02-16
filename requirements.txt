@@ -1,8 +1,7 @@
 customtkinter==5.2.2
 darkdetect==0.8.0
 packaging==24.2
-
+pillow==11.1.0
 
 #python>=3.8  
 #minimum recommandé
-

@@ -13,7 +13,7 @@ Le projet est un jeu qui se joue soit en 1 joueur contre 1 joueur, ou alors 1 jo
 5. [Informations sur la licence](#informations-sur-la-licence)
 
 ## Installation 
-Etant donné que le projet est en privé, il faut mettre sa clé Github entre le https:// et le @github ci-dessous 
+Etant donné que le projet est en privé, il faut mettre sa clé Github entre le https:// et le @github ci-dessous   
 Vous pouvez utiliser un environnement virtuel comme Venv pour isoler les dépendances du projet avant de télécharger les packages 
 ```
 $ git clone https://<VotreCléGitHub>@github.com/BastienLBC/projet-ia.git

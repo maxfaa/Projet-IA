@@ -16,4 +16,6 @@ $ python games\torches\Alumettes.py
 Une fois le projet installé, vous pouvez lancer le jeu en exécutant le fichier Alumettes.py. Une fenètres va alors s'ouvrir et vous pouvez jouer au jeu. Si vous voulez jouez contre l'ordinateur il vous suffit de modifier la classe Human de p1 en Player
 
 ## Comment contribuer 
-Pour cont
+Pour contribuer au projet vous pouvez nous aider a résoudre le problème que nous rencontrons avec l'animation des torches, dans les game_view.py
+
+## Informations sur la licence

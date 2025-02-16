@@ -36,8 +36,8 @@ class GameView(ctk.CTk):
         self.maxsize(800, 500)
         bg_pil = Image.open("games/torches/images/background.jpg")
         background_path = ImageTk.PhotoImage(bg_pil)
-        bg_image = ctk.CTkLabel(self, image=background_path, text="")  # Text vide
-        bg_image.image = background_path  # Garder une référence
+        bg_image = ctk.CTkLabel(self, image=background_path, text="")
+        bg_image.image = background_path
         bg_image.place(relx=0, rely=0, relwidth=1, relheight=1)
 
         self.message_label = ctk.CTkLabel(

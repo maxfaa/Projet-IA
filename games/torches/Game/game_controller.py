@@ -14,7 +14,7 @@ class GameControler:
         model : instance de game_model
         view : instance de game_view
     """
-    def __init__(self, players, nb_torchs=15):
+    def __init__(self, players: list[str], nb_torchs:int=15):
         """
         Initialise le controleur
         
@@ -33,13 +33,13 @@ class GameControler:
         if self.is_ai_player():
             self.handle_ai_move()
 
-    def start(self):
+    def start(self)-> None:
         """
         Lance le jeu
         """
         self.view.mainloop()
 
-    def get_nb_torchs(self):
+    def get_nb_torchs(self)-> int:
         """
         Retourne le nombre de torches en jeu
 
@@ -48,7 +48,7 @@ class GameControler:
         """
         return self.model.nb
 
-    def get_status_message(self):
+    def get_status_message(self)-> str:
         """
         Retourne le message à afficher, entre le le joueur du tour et le joueur qui a gagné
 
@@ -61,7 +61,7 @@ class GameControler:
             return f"{self.model.get_winner().name} a gagné !"
         return f"Au tour du grand : {self.model.get_current_player().name}"
 
-    def reset_game(self):
+    def reset_game(self)->None:
         """
         Réinitialise tout, le model, l'interface graphique,
         et déclenche un coup du bot si le nouveau joueur courant n'est pas human
@@ -71,7 +71,7 @@ class GameControler:
         if self.is_ai_player():
             self.handle_ai_move()
 
-    def handle_human_move(self, count):
+    def handle_human_move(self, count: int)->None:
         """
         gère le choix de l'humain, retire le nombre d'alumette choisi.
         Si la partie n'est pas finie, et que le joueur suivant est un bot,
@@ -90,7 +90,7 @@ class GameControler:
                     self.handle_ai_move()
             self.view.update_view()
 
-    def handle_ai_move(self):
+    def handle_ai_move(self)->None:
         """
         Gère le choix de l'ia, retire le nombre d'alumettes de l'ia,
         et passe au joueur suivant / vérifie si la partie est finie
@@ -103,7 +103,7 @@ class GameControler:
             self.model.switch_player()
         self.view.update_view()
 
-    def handle_end_game(self):
+    def handle_end_game(self)->None:
         """
         Fin du jeu, assigne le gagnant et le perdant
         """
@@ -113,7 +113,7 @@ class GameControler:
         loser.lose()
         self.view.end_game()
 
-    def is_ai_player(self):
+    def is_ai_player(self)->bool:
         """
         Vérifie si le joueur est un bot
 

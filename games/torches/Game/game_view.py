@@ -19,7 +19,7 @@ class GameView(ctk.CTk):
         buttons_frame = zone des boutons
         torch_image = fichier de la torche minecraft
     """
-    def __init__(self, controller):
+    def __init__(self, controller)->None:
         """
         initialisation de gameView
         Args:
@@ -55,7 +55,7 @@ class GameView(ctk.CTk):
 
         self.update_view()
 
-    def update_view(self):
+    def update_view(self)->None:
         """
         Met à jour l'affichage de l'écran en supprimant et en refaisant les alumettes
         """
@@ -63,7 +63,7 @@ class GameView(ctk.CTk):
         self.draw_matches(self.controller.get_nb_torchs())
         self.message_label.configure(text=self.controller.get_status_message())
 
-    def draw_matches(self, count):
+    def draw_matches(self, count:int)->None:
         """
         Createur d'alumettes en fonction du nombre count
         Args: 
@@ -73,7 +73,7 @@ class GameView(ctk.CTk):
             pos_x = 80 + i * 40
             self.canvas.create_image(pos_x, 150, image=self.torch_image)
 
-    def end_game(self):
+    def end_game(self)->None:
         """
         efface les boutons précédents et fait le bouton "recommencer"
         """
@@ -86,7 +86,7 @@ class GameView(ctk.CTk):
             )
         reset_button.pack(padx=10, pady=20)
 
-    def reset(self):
+    def reset(self)->None:
         """
         Réinitialise le jeu en supprimant les boutons précédents et
         fait le boutons de choix d'alumettes. Met à jour la vue
@@ -97,7 +97,7 @@ class GameView(ctk.CTk):
         self.buttons_create()
         self.update_view()
 
-    def buttons_create(self):
+    def buttons_create(self)->None:
         """
         Créateur de boutons de choix d'alumettes, pour éviter la redondance
         """

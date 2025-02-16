@@ -15,7 +15,7 @@ class GameModel:
         displayable (bool): active/désactive l'affichage dans la console
         current_player: Joueur dont c'est le tour
     """
-    def __init__(self, nb_torch, players, display=True):
+    def __init__(self, nb_torch:int, players:list[str], display: bool=True)->None:
         """
         Initialise une partie.
 
@@ -35,13 +35,13 @@ class GameModel:
 
         self.shuffle()
 
-    def shuffle(self):
+    def shuffle(self)->None:
         """
         Selecte aléatoirement un joueur pour commencer
         """
         self.current_player = random.choice(self.players)
 
-    def reset(self):
+    def reset(self)->None:
         """
         Reinitialise le nombre d'alumette et
         rechoisi un joueur aleatoire pour commencer
@@ -49,14 +49,14 @@ class GameModel:
         self.nb = self.original_nb
         self.shuffle()
 
-    def display(self):
+    def display(self)->None:
         """
         affiche le nombre d'alumettes restantes dans la console
         """
         if self.displayable:
             print(f"Allumettes restantes: {self.nb}")
 
-    def step(self, action):
+    def step(self, action:int)->None:
         """
         Execute l'action, soustrait le nombre d'alumettes choisie
 
@@ -65,7 +65,7 @@ class GameModel:
         """
         self.nb -= action
 
-    def is_game_over(self):
+    def is_game_over(self)->bool:
         """
         Verifie si la partie est finie
 
@@ -74,7 +74,7 @@ class GameModel:
         """
         return self.nb <= 0
 
-    def play(self):
+    def play(self)->None:
         """
         Lance la partie complète
         et alterne les joueurs jusqu'à ce qu'il n'y ai plus d'alumettes
@@ -87,7 +87,7 @@ class GameModel:
             self.switch_player()
         self.current_player.win()
 
-    def switch_player(self):
+    def switch_player(self)->None:
         """
         Inverse le joueur courant
         """
@@ -96,7 +96,7 @@ class GameModel:
         else:
             self.current_player = self.players[1]
 
-    def get_current_player(self):
+    def get_current_player(self)->str:
         """
         Retourne le joueur actuel
 
@@ -105,7 +105,7 @@ class GameModel:
         """
         return self.current_player
 
-    def get_winner(self):
+    def get_winner(self)->str:
         """
         Retourne le gagnant de la partie
 
@@ -116,7 +116,7 @@ class GameModel:
             return self.players[0] if self.current_player == self.players[1] else self.players[1]
         return None
 
-    def get_loser(self):
+    def get_loser(self)->str:
         """
         Retourne le perdant de la partie
 

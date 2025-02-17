@@ -12,7 +12,8 @@ Le projet est un jeu qui se joue soit en 1 contre 1, ou 1 joueur contre l'ordina
 4. [Comment contribuer](#comment-contribuer)
 5. [Informations sur la licence](#informations-sur-la-licence)
 
-## Installation  
+## Installation
+Etant donné que le projet est privé, il faut mettre sa clé Github entre le https:// et le @github ci-dessous. 
 Vous pouvez utiliser un environnement virtuel comme Venv pour isoler les dépendances du projet avant de télécharger les packages. 
 
 Ouvrez votre terminal, et exécutez ces commandes pour installer tout le nécéssaire
@@ -21,12 +22,13 @@ $ git clone https://github.com/BastienLBC/Projet-IA.git
 $ cd projet-ia
 $ pip install -r requirements.txt
 ```
-Et ensuite exécutez cette commande pour lancer le jeu
+
+## Utilisation 
+Une fois le projet installé, vous pouvez lancer le jeu en exécutant le fichier Alumettes.py. Une fenêtre va alors s'ouvrir et vous pourrez jouer au jeu. Si vous voulez jouer contre l'ordinateur, il vous suffit de modifier la classe Human de p1 en Player.
+Ou exécutez le dans votre terminal via :
 ```
 $ python games\torches\Alumettes.py
 ```
-## Utilisation 
-Une fois le projet installé, vous pouvez lancer le jeu en exécutant le fichier Alumettes.py. Une fenêtre va alors s'ouvrir et vous pourrez jouer au jeu. Si vous voulez jouer contre l'ordinateur, il vous suffit de modifier la classe Human de p1 en Player.
 
 ## Comment contribuer 
 Pour contribuer au projet, vous pouvez nous aider à résoudre le problème que nous rencontrons avec l'animation des torches, dans les game_view.py .

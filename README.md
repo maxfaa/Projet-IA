@@ -19,7 +19,7 @@ Vous pouvez utiliser un environnement virtuel comme Venv pour isoler les dépend
 
 Ouvrez votre terminal, et exécutez ces commandes pour installer tout le nécéssaire
 ```
-$ git clone https://github.com/BastienLBC/Projet-IA.git
+$ git clone https://@github.com/BastienLBC/Projet-IA.git
 $ cd projet-ia
 $ pip install -r requirements.txt
 ```

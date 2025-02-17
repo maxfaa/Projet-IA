@@ -12,13 +12,17 @@ Le projet est un jeu qui se joue soit en 1 contre 1, ou 1 joueur contre l'ordina
 4. [Comment contribuer](#comment-contribuer)
 5. [Informations sur la licence](#informations-sur-la-licence)
 
-## Installation 
-Etant donné que le projet est privé, il faut mettre sa clé Github entre le https:// et le @github ci-dessous.   
+## Installation  
 Vous pouvez utiliser un environnement virtuel comme Venv pour isoler les dépendances du projet avant de télécharger les packages. 
+
+Ouvrez votre terminal, et exécutez ces commandes pour installer tout le nécéssaire
 ```
-$ git clone https://<VotreCléGitHub>@github.com/BastienLBC/projet-ia.git
+$ git clone https://github.com/BastienLBC/Projet-IA.git
 $ cd projet-ia
 $ pip install -r requirements.txt
+```
+Et ensuite exécutez cette commande pour lancer le jeu
+```
 $ python games\torches\Alumettes.py
 ```
 ## Utilisation 

@@ -13,8 +13,9 @@ Le projet est un jeu qui se joue soit en 1 contre 1, ou 1 joueur contre l'ordina
 5. [Informations sur la licence](#informations-sur-la-licence)
 
 ## Installation
-Etant donné que le projet est privé, il faut mettre sa clé Github entre le https:// et le @github ci-dessous. 
-Vous pouvez utiliser un environnement virtuel comme Venv pour isoler les dépendances du projet avant de télécharger les packages. 
+Etant donné que le projet est privé, il faut mettre sa clé Github entre le https:// et le @github ci-dessous.  
+Pour avoir une clé, il faut aller ici https://github.com/settings/tokens et copier le token qui va être généré, il ne faut pas le partager et le garder uniquement pour soi.  
+Vous pouvez utiliser un environnement virtuel comme Venv pour isoler les dépendances du projet avant de télécharger les packages.  
 
 Ouvrez votre terminal, et exécutez ces commandes pour installer tout le nécéssaire
 ```

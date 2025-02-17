@@ -30,6 +30,6 @@ python games\torches\Alumettes.py
 ```
 
 ## Comment contribuer 
-Pour contribuer au projet, vous pouvez nous aider à résoudre le problème que nous rencontrons avec l'animation des torches, dans les `game_view.py`.
+Pour contribuer au projet, vous pouvez nous aider à résoudre le problème que nous rencontrons avec l'animation des torches, dans les [`game_view.py`](./games/torches/Game/game_view.py).
 
 ## Informations sur la licence

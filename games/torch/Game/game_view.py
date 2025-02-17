@@ -1,5 +1,5 @@
 """
-Module qui gère l'interface graphique du jeu des alumettes
+Module qui gère l'interface graphique du jeu des allumettes
 """
 from tkinter import PhotoImage
 import customtkinter as ctk
@@ -10,13 +10,13 @@ ctk.set_default_color_theme("green")
 
 class GameView(ctk.CTk):
     """
-    Interface graphique des alumettes
+    Interface graphique des allumettes
 
     Attributes:
         controller : instance de GameController
         buttons (list): liste de boutons
         message_label : affichage des messages
-        canvas : zone des alumettes
+        canvas : zone des allumettes
         buttons_frame = zone des boutons
         torch_image = fichier de la torche minecraft
         frames (int): nombre total de frames du gif
@@ -34,7 +34,7 @@ class GameView(ctk.CTk):
         self.title("Jeu des allumettes")
         self.minsize(800, 500)
         self.maxsize(800, 500)
-        bg_pil = Image.open("games/torches/images/background.jpg")
+        bg_pil = Image.open("games/torch/images/background.jpg")
         background_path = ImageTk.PhotoImage(bg_pil)
         bg_image = ctk.CTkLabel(self, image=background_path, text="")  # Text vide
         bg_image.image = background_path  # Garder une référence
@@ -71,7 +71,7 @@ class GameView(ctk.CTk):
 
     def update_view(self)->None:
         """
-        Met à jour l'affichage de l'écran en supprimant et en refaisant les alumettes
+        Met à jour l'affichage de l'écran en supprimant et en refaisant les allumettes
         """
         self.canvas.delete("all")
         self.draw_matches(self.controller.get_nb_torchs())
@@ -79,9 +79,9 @@ class GameView(ctk.CTk):
 
     def draw_matches(self, count:int)->None:
         """
-        Createur d'alumettes en fonction du nombre count
+        Createur d'allumettes en fonction du nombre count
         Args: 
-            count : nombre d'alumettes
+            count : nombre d'allumettes
         """
         for i in range(count):
             pos_x = 80 + i * 40
@@ -103,7 +103,7 @@ class GameView(ctk.CTk):
     def reset(self)->None:
         """
         Réinitialise le jeu en supprimant les boutons précédents et
-        fait le boutons de choix d'alumettes. Met à jour la vue
+        fait le boutons de choix d'allumettes. Met à jour la vue
         """
         for widget in self.buttons_frame.winfo_children():
             widget.destroy()
@@ -113,7 +113,7 @@ class GameView(ctk.CTk):
 
     def buttons_create(self)->None:
         """
-        Créateur de boutons de choix d'alumettes, pour éviter la redondance
+        Créateur de boutons de choix d'allumettes, pour éviter la redondance
         """
         for i in range(1, 4):
             button = ctk.CTkButton(
